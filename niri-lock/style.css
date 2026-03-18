@@ -1,0 +1,37 @@
+window {
+background-color: rgba(15, 15, 20, 0.75);
+}
+
+#clock-label {
+font-size: 72px;
+font-family: "JetBrainsMono Nerd Font";
+color: #e0e0e0;
+margin-top: 200px;
+}
+
+#userinfo {
+font-size: 18px;
+color: #a0a0a0;
+margin-top: 10px;
+}
+
+#input-field {
+margin-top: 30px;
+padding: 12px;
+border-radius: 14px;
+background-color: rgba(30, 30, 40, 0.8);
+border: 2px solid rgba(100, 100, 120, 0.3);
+color: #ffffff;
+}
+
+button {
+background-color: rgba(40, 40, 55, 0.7);
+border-radius: 10px;
+padding: 8px 16px;
+margin: 5px;
+color: #ffffff;
+}
+
+button:hover {
+background-color: rgba(80, 80, 110, 0.9);
+}
