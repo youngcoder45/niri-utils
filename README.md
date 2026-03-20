@@ -1,48 +1,56 @@
 # niri-utils
 
-A collection of minimal utilities for the Niri Wayland compositor.
+Minimal utilities for the **Niri** Wayland compositor.
 
-This repository provides lightweight tools to enhance the Niri experience without relying on sway-based components.
+This repo intentionally stays small and avoids sway-based components.
 
----
-
-## Overview
+## What’s included
 
 ### niri-lock
 
-A customizable lockscreen built using `gtklock`.
+Lockscreen wrapper around `gtklock`.
 
-* Lightweight and minimal
-* No swaylock dependency
-* Themeable via simple configuration
-
----
+- Configuration lives in `~/.config/niri-lock/`
+- Theme via `style.css`
 
 ### niri-idle
 
-A Rust-based idle daemon.
+Rust-based idle daemon.
 
-> [!NOTE]
-> This component is currently experimental and does not implement proper Wayland idle detection yet.
+> [!WARNING]
+> `niri-idle` is currently experimental and does not implement robust Wayland idle detection yet.
 
----
+## Install
 
-## Installation
+The installer is **user-mode**: it installs config files into `~/.config` and the `niri-idle` binary into `~/.local/bin`.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/niri-utils
+git clone https://github.com/youngcoder45/niri-utils
 cd niri-utils
 chmod +x install.sh
 ./install.sh
 ```
 
----
+Notes:
+
+- On Arch, `install.sh` can optionally install dependencies via `pacman`.
+- On other distros, it skips dependency installation.
+- It won’t overwrite your existing `~/.config/niri-lock/config.ini` or `style.css` (safe install), but it will update `lock.sh`.
+
+Useful env vars:
+
+- `NIRI_UTILS_SKIP_DEPS=1` to skip dependency installation even on Arch.
+- `NIRI_UTILS_BIN_HOME=/some/path` to install `niri-idle` somewhere else.
+
+More details: see docs.
+
+- docs/INSTALL.md
 
 ## Usage
 
-### Lock Screen
+### Lock screen
 
-Add this to your Niri configuration:
+Add this to your Niri config:
 
 ```kdl
 bind "Mod+L" {
@@ -50,22 +58,19 @@ bind "Mod+L" {
 }
 ```
 
----
+Docs: docs/NIRI_LOCK.md
 
-### Idle Daemon
+### Idle daemon
 
 Run manually:
 
 ```bash
-~/.local/bin/niri-idle
+niri-idle
 ```
 
-> [!WARNING]
-> Do not enable automatic startup yet. The current implementation may trigger locks incorrectly.
+Docs: docs/NIRI_IDLE.md
 
----
-
-## Project Structure
+## Project structure
 
 ```
 niri-utils/
@@ -73,34 +78,18 @@ niri-utils/
 │   ├── lock.sh
 │   ├── config.ini
 │   └── style.css
-│
 ├── niri-idle/
 │   ├── Cargo.toml
+│   ├── Cargo.lock
 │   └── src/
-│
+├── docs/
 ├── install.sh
 └── README.md
 ```
 
----
+## Contributing
 
-## Requirements
-
-* Niri (Wayland compositor)
-* gtklock
-* imagemagick
-* Rust (for niri-idle)
-
----
-
-## Roadmap
-
-* Proper Wayland idle detection
-* Improved configuration system
-* AUR packages
-* Additional modules and integrations
-
----
+See CONTRIBUTING.md and docs/DEVELOPMENT.md.
 
 ## License
 

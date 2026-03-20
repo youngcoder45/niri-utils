@@ -1,85 +1,70 @@
 # Contributing
 
-Thank you for your interest in contributing to this project.
+Thanks for helping improve `niri-utils`.
 
-This repository contains utilities for the Niri Wayland compositor. Contributions should maintain the project's goals of minimalism, modularity, and independence from sway-based tools.
+This project aims to stay **minimal**, composable, and independent from sway-based tooling.
 
----
+## Ground rules
 
-## Guidelines
+- Keep changes small and focused.
+- Avoid new dependencies unless clearly justified.
+- Prefer simple, readable code over cleverness.
+- Don’t introduce sway / swaylock / swayidle based components.
 
-* Keep implementations simple and minimal.
-* Avoid introducing unnecessary dependencies.
-* Do not add sway or sway-related components.
-* Follow existing project structure and conventions.
-* Ensure scripts are POSIX-compliant (`/bin/sh`).
+## Repo layout
 
----
+- `niri-lock/` — `gtklock` wrapper + config.
+- `niri-idle/` — Rust crate (experimental).
+- `install.sh` — user-mode installer (currently uses bash).
 
-## Development Setup
+## Development setup
 
-Clone the repository:
+Clone:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/niri-utils
+git clone https://github.com/youngcoder45/niri-utils
 cd niri-utils
 ```
 
-Install dependencies:
+### Rust (niri-idle)
+
+From `niri-idle/`:
 
 ```bash
-sudo pacman -S gtklock imagemagick rust
+cargo build
+cargo fmt
+cargo clippy -- -D warnings
+cargo test
 ```
 
----
+### Shell scripts
 
-## Making Changes
+- `niri-lock/lock.sh` and `install.sh` are shell scripts.
+- If you use bash-isms, keep the shebang as bash and avoid breaking non-interactive execution.
+- Be careful with quoting, file permissions, and paths.
 
-1. Fork the repository
-2. Create a new branch:
+## Documentation
 
-```bash
-git checkout -b feature/your-feature-name
-```
+Docs live under `docs/` and should:
 
-3. Make your changes
-4. Test thoroughly
-5. Commit with clear messages:
+- Match the actual behavior of the scripts/binaries.
+- Avoid distro-specific assumptions unless called out.
+- Prefer short, actionable examples.
 
-```bash
-git commit -m "feat: add new feature"
-```
+## Pull requests
 
----
+- Describe what changed and why.
+- Include how you tested (commands + platform).
+- Keep PRs focused (one theme per PR).
 
-## Pull Requests
+## Reporting issues
 
-* Provide a clear description of changes
-* Explain why the change is needed
-* Keep pull requests focused and small
+When filing a bug, include:
 
----
-
-## Reporting Issues
-
-When reporting bugs, include:
-
-* System details (Arch version, Niri version)
-* Steps to reproduce
-* Expected vs actual behavior
-* Relevant logs (if available)
-
----
-
-## Notes
+- Distro + versions (Niri, gtklock)
+- Steps to reproduce
+- Expected vs actual behavior
+- Logs/terminal output
 
 > [!NOTE]
-> The `niri-idle` component is currently experimental. Contributions toward proper Wayland idle handling are welcome.
-
----
-
-## Code Style
-
-* Use consistent formatting
-* Keep code readable and concise
-* Prefer clarity over cleverness
+> `niri-idle` is experimental; correctness reports are especially valuable.
