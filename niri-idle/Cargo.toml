@@ -1,6 +1,13 @@
 [package]
 name = "niri-idle"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+wayland-client = "0.31"
+wayland-protocols = { version = "0.31", features = ["client"] }
+wayland-scanner = "0.31"
+wayland-backend = "0.3"
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
