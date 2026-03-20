@@ -37,6 +37,6 @@ button:hover {
 window {
     background:
         linear-gradient(rgba(15, 15, 20, 0.6), rgba(15, 15, 20, 0.6)),
-        url("/home/aditya/Pictures/wallpapers/rogue.jpg");
+        url("~/Pictures/wallpapers/rogue.jpg");
     background-size: cover;
 }
